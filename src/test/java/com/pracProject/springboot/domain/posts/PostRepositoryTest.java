@@ -1,5 +1,6 @@
 package com.pracProject.springboot.domain.posts;
 
+import com.pracProject.springboot.web.dto.PostsUpdateRequestDto;
 import javafx.geometry.Pos;
 import org.junit.After;
 import org.junit.Test;
