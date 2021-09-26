@@ -1,5 +1,6 @@
 package com.pracProject.springboot.domain.posts;
 
+import com.pracProject.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
     @Id
     @GeneratedValue
     public Long id;
