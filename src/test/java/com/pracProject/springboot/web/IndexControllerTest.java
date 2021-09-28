@@ -35,6 +35,6 @@ public class IndexControllerTest {
         String body = this.restTemplate.getForObject("/" , String.class);
 
         //then
-        assertThat(body).contains("테스트1");
+        assertThat(body).contains("글 등록");
     }
 }

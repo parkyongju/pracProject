@@ -59,18 +59,18 @@ public class PostsApiControllerTest {
 
         List<Posts> all = postsRepository.findAll();
         assertThat(all.get(0).getTitle()).isEqualTo(title);
-        assertThat(all.get(0).getContent()).isEqualTo(contents);
+        assertThat(all.get(0).getContents()).isEqualTo(contents);
     }
 
     @Test
     public void Posts_수정() throws Exception {
-        Posts savedPosts = postsRepository.save(Posts.builder().title("title").content("content").author("author").build());
+        Posts savedPosts = postsRepository.save(Posts.builder().title("title").contents("content").author("author").build());
 
         Long updateId = savedPosts.getId();
         String expectedTitle = "title2";
         String expectedContent = "contnet2";
 
-        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder().title(expectedTitle).content(expectedContent).build();
+        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder().title(expectedTitle).contents(expectedContent).build();
         String url = "http://localhost:" + port + "/api/v1/posts/"+updateId;
 
         HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
@@ -84,6 +84,6 @@ public class PostsApiControllerTest {
 
         List<Posts> all = postsRepository.findAll();
         assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
-        assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
+        assertThat(all.get(0).getContents()).isEqualTo(expectedContent);
     }
 }
