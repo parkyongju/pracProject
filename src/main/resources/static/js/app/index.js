@@ -4,6 +4,9 @@ var main = {
         $("#btn-save").on('click' , function(){
             _this.save();
         });
+        $("#btn-update").on('click' , function(){
+            _this.update();
+        });
     },
     save : function(){
         var data = {
@@ -11,6 +14,7 @@ var main = {
             author : $("#author").val(),
             contents : $("#contents").val()
         };
+        console.log(data);
         $.ajax({
             type:"POST"
             , url:"/api/v1/posts"
@@ -19,6 +23,24 @@ var main = {
             , data : JSON.stringify(data)
         }).done(function(){
             alert('글 등록됨 ㅅㄱ');
+            window.location.href = '/';
+        }).fail(function(error){
+            alert(JSON.stringify(error));
+        });
+    },
+    update : function(){
+        var data = {
+            title : $("#title").val(),
+            content : $("#contents").val()
+        };
+        $.ajax({
+            type:"PUT"
+            , url:"/api/v1/posts/" + $("#id").val()
+            , dataType:'json'
+            , contentType:'application/json; charset=utf-8'
+            , data : JSON.stringify(data)
+        }).done(function(){
+            alert('글 수정됨 ㅅㄱ');
             window.location.href = '/';
         }).fail(function(error){
             alert(JSON.stringify(error));
